@@ -1,0 +1,36 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Button } from "../components/ui/button";
+import { ContactForm } from "../components/contact-form";
+---
+
+<Layout>
+  <div class="flex flex-col items-center justify-center min-h-screen bg-gray-100 py-12">
+    <h1 class="text-5xl font-extrabold text-gray-900 mb-4">Welcome to My Astro Project</h1>
+    <p class="text-lg text-gray-700 text-center mb-6">
+      This is a basic page created by the setup script. Explore and enjoy building with Astro, React, and Tailwind CSS!
+    </p>
+    <div class="space-x-4 mb-12">
+      <Button id="colorButton" variant="default">Get Started</Button>
+      <Button variant="outline">Learn More</Button>
+    </div>
+
+    <div class="w-full max-w-md mx-auto bg-white p-8 rounded-lg shadow-md">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Contact Us</h2>
+      <ContactForm client:load />
+    </div>
+  </div>
+</Layout>
+
+<script>
+  const button = document.getElementById('colorButton');
+  let isRed = false;
+
+  button?.addEventListener('click', () => {
+    console.log('button clicked');
+    isRed = !isRed;
+    if (button) {
+      button.style.backgroundColor = isRed ? 'red' : 'blue';
+    }
+  });
+</script>
